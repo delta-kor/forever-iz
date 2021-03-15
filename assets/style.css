@@ -8,6 +8,10 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+body {
+  background: #000000;
+}
+
 .darken {
   position: absolute;
   width: 100%;
