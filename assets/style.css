@@ -20,6 +20,7 @@
   position: relative;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
 .landing > .cover {
@@ -47,17 +48,26 @@
 
 .landing > .description {
   position: absolute;
-  width: 741px;
+  width: 800px;
   height: 140px;
-  left: calc(50% - 741px/2 - 0.5px);
+  left: calc(50% - 800px/2 - 0.5px);
   top: calc(50% - 140px/2 + 84px);
   font-family: Noto Sans KR, sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 48px;
   line-height: 70px;
-  display: flex;
-  align-items: center;
   text-align: center;
   color: #FFFFFF;
+}
+
+.landing > .description > span {
+  display: inline-block;
+}
+
+.landing > .description > span.highlight {
+  margin: 8px 0 0 0;
+  padding: 4px 12px;
+  background: linear-gradient(90deg, #FF50A0 0%, #FF298B 100%);
+  border-radius: 8px;
 }
