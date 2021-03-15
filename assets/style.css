@@ -8,6 +8,10 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   background: #000000;
 }
