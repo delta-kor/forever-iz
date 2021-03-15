@@ -73,8 +73,35 @@ body {
 }
 
 .landing > .description > span.highlight {
+  position: relative;
   margin: 8px 0 0 0;
   padding: 4px 12px;
+  z-index: 1;
+}
+
+.landing > .description > span.highlight::before {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 100%;
+  top: 4px;
+  bottom: 4px;
+  content: '';
   background: linear-gradient(90deg, #FF50A0 0%, #FF298B 100%);
   border-radius: 8px;
+  transition: 1s cubic-bezier(.53,.07,.24,.98);
+  z-index: -1;
+}
+
+.landing > .description > span.highlight.active::before {
+  right: 0;
+}
+
+.landing > .scroll {
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  left: calc(50% - 128px/2);
+  bottom: 38px;
+  cursor: pointer;
 }
