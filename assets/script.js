@@ -22,10 +22,13 @@ class UI {
   }
 
   static scroll() {
+    // currentSection = 2;
+
     document.getElementsByClassName('section')[currentSection].scrollIntoView({
       behavior: 'smooth',
       top: window.innerHeight,
     });
+
     void UI.move(currentSection);
     currentSection++;
   }
@@ -76,6 +79,25 @@ class UI {
       lines[0].classList.add('active');
 
       await delay(3800);
+      lines[1].classList.add('active');
+
+      await delay(3000);
+      scroll.classList.add('active');
+    }
+
+    if (index === 2) {
+      lines[0].innerHTML = '힘들었던 시간은 이제 사라져 버리고';
+      lines[1].innerHTML = '밝은 빛이 되어 노래 할게';
+
+      audio.src = 'music/memory.mp3';
+
+      await delay(500);
+      await audio.play();
+
+      await delay(500);
+      lines[0].classList.add('active');
+
+      await delay(4900);
       lines[1].classList.add('active');
 
       await delay(3000);
