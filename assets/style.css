@@ -23,7 +23,6 @@ body {
   background: rgba(0, 0, 0, 0.6);
 }
 
-
 .landing {
   position: relative;
   width: 100vw;
@@ -160,11 +159,11 @@ body {
   font-size: 48px;
   text-align: center;
   color: #FFFFFF;
+  transition: 0.5s opacity;
 }
 
 .fixed > .content > .line.active {
   opacity: 1;
-  transition: 0.5s opacity;
 }
 
 .fixed > .content > .line > span {
@@ -193,4 +192,19 @@ body {
 
 .fixed > .content > .line > span.active {
   padding: 4px 12px;
+}
+
+.fixed > .scroll {
+  position: absolute;
+  opacity: 0;
+  width: 128px;
+  height: 128px;
+  left: calc(50% - 128px/2);
+  bottom: 38px;
+  transition: 0.5s opacity;
+}
+
+.fixed > .scroll.active {
+  opacity: 1;
+  cursor: pointer;
 }

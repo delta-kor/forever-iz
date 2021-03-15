@@ -22,18 +22,19 @@ class UI {
   }
 
   static scroll() {
-    if (currentSection === 0) {
-      document.getElementsByClassName('section')[currentSection].scrollIntoView({
-        behavior: 'smooth',
-        top: window.innerHeight,
-      });
-      void UI.move(0);
-      return true;
-    }
+    document.getElementsByClassName('section')[currentSection].scrollIntoView({
+      behavior: 'smooth',
+      top: window.innerHeight,
+    });
+    void UI.move(currentSection);
+    currentSection++;
   }
 
   static async move(index) {
     const lines = document.querySelectorAll('.fixed > .content > .line');
+    const scroll = document.querySelector('.fixed > .scroll');
+
+    scroll.classList.remove('active');
     lines.forEach(element => element.classList.remove('active'));
 
     if (index === 0) {
@@ -57,6 +58,28 @@ class UI {
 
       await delay(100);
       document.querySelector('.section > .cover').classList.add('active');
+
+      await delay(1000);
+      scroll.classList.add('active');
+    }
+
+    if (index === 1) {
+      lines[0].innerHTML = '꿈이라도 좋아 빨갛게 칠해봐';
+      lines[1].innerHTML = '언제든 깨어날 수 있게 내가 불러 줄게';
+
+      audio.src = 'music/rose.mp3';
+
+      await delay(500);
+      await audio.play();
+
+      await delay(500);
+      lines[0].classList.add('active');
+
+      await delay(3800);
+      lines[1].classList.add('active');
+
+      await delay(3000);
+      scroll.classList.add('active');
     }
   }
 }
@@ -69,7 +92,6 @@ async function land() {
   await delay(500);
   UI.highlight(true);
 }
-
 void land();
 
 window.addEventListener('mousemove', e => {
@@ -77,8 +99,25 @@ window.addEventListener('mousemove', e => {
   UI.followCursor(x, y);
 });
 
-for (const scroll of document.getElementsByClassName('scroll')) {
-  scroll.addEventListener('click', () => {
+document.querySelectorAll('.scroll').forEach(element => {
+  element.addEventListener('click', async () => {
+    if (!element.classList.contains('active')) return;
+
+    const lines = document.querySelectorAll('.fixed > .content > .line');
+    const scroll = document.querySelector('.fixed > .scroll');
+
+    scroll.classList.remove('active');
+    lines.forEach(element => element.classList.remove('active'));
+
+    if (element.dataset.type !== 'top') {
+      for (let i = 0; i < 99; i++) {
+        await delay(5);
+        audio.volume -= 1 / 100;
+      }
+      audio.pause();
+      audio.volume = 1;
+    }
+
     UI.scroll();
   });
-}
+});
