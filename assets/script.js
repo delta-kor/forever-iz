@@ -1,5 +1,8 @@
 let currentSection = 0;
 const audio = new Audio();
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
 
 class UI {
   static followCursor(x, y) {
@@ -20,17 +23,24 @@ class UI {
 
   static scroll() {
     if (currentSection === 0) {
-      window.scrollTo(0, window.innerHeight);
-      void UI.title(0);
+      document.getElementsByClassName('section')[currentSection].scrollIntoView({
+        behavior: 'smooth',
+        top: window.innerHeight,
+      });
+      void UI.move(0);
       return true;
     }
   }
 
-  static async title(index) {
+  static async move(index) {
     const lines = document.querySelectorAll('.fixed > .content > .line');
-    const highlight = document.querySelector('.fixed > .content > .line > .highlight');
+    lines.forEach(element => element.classList.remove('active'));
 
     if (index === 0) {
+      lines[0].innerHTML = 'Have you ever seen anything?';
+      lines[1].innerHTML = 'Have you ever seen this <span class="highlight">color?</span>';
+      const highlight = document.querySelector('.fixed > .content > .line > .highlight');
+
       audio.src = 'music/colors.mp3';
 
       await audio.play();
