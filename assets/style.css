@@ -1,3 +1,5 @@
+@import 'font/font.css';
+
 * {
   margin: 0;
   padding: 0;
@@ -6,13 +8,21 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.darken {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+
 .landing {
   position: relative;
   width: 100vw;
   height: 100vh;
 }
 
-.cover {
+.landing > .cover {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -20,9 +30,34 @@
   object-position: 50% 50%;
 }
 
-.darken {
+.landing > .title {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  width: 741px;
+  height: 155px;
+  left: calc(50% - 741px/2 - 0.5px);
+  top: calc(50% - 155px/2 - 75.5px);
+  font-family: Product Sans, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 128px;
+  line-height: 155px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.landing > .description {
+  position: absolute;
+  width: 741px;
+  height: 140px;
+  left: calc(50% - 741px/2 - 0.5px);
+  top: calc(50% - 140px/2 + 84px);
+  font-family: Noto Sans KR, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 70px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
 }
