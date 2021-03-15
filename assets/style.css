@@ -6,6 +6,7 @@
   outline: none;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
 }
 
 *::-webkit-scrollbar {
@@ -29,6 +30,7 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  z-index: 1;
 }
 
 .landing > .cover {
@@ -108,4 +110,88 @@ body {
   left: calc(50% - 128px/2);
   bottom: 38px;
   cursor: pointer;
+}
+
+.section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.section > .cover {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.section > .cover.active {
+  opacity: 1;
+  transition: 0.5s opacity;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.fixed > .content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+}
+
+.fixed > .content > .line {
+  display: block;
+  opacity: 0;
+  font-family: Noto Sans KR, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.fixed > .content > .line.active {
+  opacity: 1;
+  transition: 0.5s opacity;
+}
+
+.fixed > .content > .line > span {
+  position: relative;
+  transition: 1s cubic-bezier(.53,.07,.24,.98);
+  z-index: 1;
+}
+
+.fixed > .content > .line > span.highlight::before {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 100%;
+  top: 4px;
+  bottom: 4px;
+  content: '';
+  background: linear-gradient(90deg, #FF50A0 0%, #FF298B 100%);
+  border-radius: 8px;
+  transition: 1s cubic-bezier(.53,.07,.24,.98);
+  z-index: -1;
+}
+
+.fixed > .content > .line > span.highlight.active::before {
+  right: 0;
+}
+
+.fixed > .content > .line > span.active {
+  padding: 4px 12px;
 }
