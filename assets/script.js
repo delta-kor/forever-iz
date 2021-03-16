@@ -33,14 +33,23 @@ class UI {
     currentSection++;
   }
 
+  static setMusic(title, album) {
+    const music = document.querySelector('.fixed > .music');
+    music.querySelector('.title').textContent = title;
+    music.querySelector('.album').textContent = album;
+  }
+
   static async move(index) {
     const lines = document.querySelectorAll('.fixed > .content > .line');
     const scroll = document.querySelector('.fixed > .scroll');
+    const music = document.querySelector('.fixed > .music');
 
     scroll.classList.remove('active');
     lines.forEach(element => element.classList.remove('active'));
 
     if (index === 0) {
+      UI.setMusic('아름다운 색', 'COLOR*IZ');
+
       lines[0].innerHTML = 'Have you ever seen anything?';
       lines[1].innerHTML = 'Have you ever seen this <span class="highlight">color?</span>';
       const highlight = document.querySelector('.fixed > .content > .line > .highlight');
@@ -52,6 +61,7 @@ class UI {
 
       await delay(800);
       lines[0].classList.add('active');
+      music.classList.add('active');
 
       await delay(4800);
       lines[1].classList.add('active');
@@ -67,6 +77,8 @@ class UI {
     }
 
     if (index === 1) {
+      UI.setMusic('라비앙로즈', 'COLOR*IZ');
+
       lines[0].innerHTML = '꿈이라도 좋아 빨갛게 칠해봐';
       lines[1].innerHTML = '언제든 깨어날 수 있게 내가 불러 줄게';
 
@@ -74,6 +86,7 @@ class UI {
 
       await delay(500);
       await audio.play();
+      music.classList.add('active');
 
       await delay(500);
       lines[0].classList.add('active');
@@ -86,6 +99,8 @@ class UI {
     }
 
     if (index === 2) {
+      UI.setMusic('비밀의 시간', 'COLOR*IZ');
+
       lines[0].innerHTML = '힘들었던 시간은 이제 사라져 버리고';
       lines[1].innerHTML = '밝은 빛이 되어 노래 할게';
 
@@ -93,6 +108,7 @@ class UI {
 
       await delay(500);
       await audio.play();
+      music.classList.add('active');
 
       await delay(500);
       lines[0].classList.add('active');
@@ -127,9 +143,12 @@ document.querySelectorAll('.scroll').forEach(element => {
 
     const lines = document.querySelectorAll('.fixed > .content > .line');
     const scroll = document.querySelector('.fixed > .scroll');
+    const music = document.querySelector('.fixed > .music');
 
     scroll.classList.remove('active');
     lines.forEach(element => element.classList.remove('active'));
+
+    music.classList.remove('active');
 
     if (element.dataset.type !== 'top') {
       for (let i = 0; i < 99; i++) {

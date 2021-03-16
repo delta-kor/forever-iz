@@ -14,6 +14,7 @@
 
 body {
   background: #000000;
+  overflow: hidden;
 }
 
 .darken {
@@ -207,4 +208,50 @@ body {
 .fixed > .scroll.active {
   opacity: 1;
   cursor: pointer;
+}
+
+.fixed > .music {
+  position: absolute;
+  top: 77px;
+  left: 50%;
+  height: 78px;
+  transform: translateX(-50%);
+  vertical-align: top;
+  font-size: 0;
+  opacity: 0;
+  transition: 0.5s opacity;
+}
+
+.fixed > .music.active {
+  opacity: 1;
+}
+
+.fixed > .music > .icon {
+  margin: 15px 43px 15px 0;
+}
+
+.fixed > .music > .title {
+  display: inline-block;
+  height: 52px;
+  font-family: Noto Sans KR, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 52px;
+  color: #FFFFFF;
+  vertical-align: top;
+}
+
+.fixed > .music > .album {
+  position: absolute;
+  left: 91px;
+  top: 52px;
+  height: 25px;
+  font-family: Noto Sans KR, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 26px;
+  color: #B8B8B8;
+  vertical-align: bottom;
 }
