@@ -411,7 +411,6 @@ window.addEventListener('mousemove', e => {
 
 window.addEventListener('resize', () => {
   document.getElementsByClassName('section')[currentSection - 1].scrollIntoView({
-    behavior: 'smooth',
     top: window.innerHeight,
   });
 });
