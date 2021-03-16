@@ -22,8 +22,6 @@ class UI {
   }
 
   static scroll() {
-    // currentSection = 6;
-
     document.getElementsByClassName('section')[currentSection].scrollIntoView({
       behavior: 'smooth',
       top: window.innerHeight,
@@ -219,6 +217,141 @@ class UI {
       await delay(3000);
       scroll.classList.add('active');
     }
+
+    if (index === 7) {
+      UI.setMusic('SPACESHIP', 'BLOOM*IZ');
+
+      lines[0].innerHTML = '세상은 넓고 우리는 달려갈 거야';
+      lines[1].innerHTML = '하나의 꿈을 그리는 시간은 빛이 될 거야';
+
+      audio.src = 'music/spaceship.mp3';
+
+      await delay(500);
+      await audio.play();
+      music.classList.add('active');
+
+      await delay(100);
+      lines[0].classList.add('active');
+
+      await delay(4900);
+      lines[1].classList.add('active');
+
+      await delay(3000);
+      scroll.classList.add('active');
+    }
+
+    if (index === 8) {
+      UI.setMusic('YOU & I', 'BLOOM*IZ');
+
+      lines[0].innerHTML = '떨리는 네 손잡아 줄게 온기 돼줄게';
+      lines[1].innerHTML = '기억해 지금 이 순간의 우리를';
+
+      audio.src = 'music/uni.mp3';
+
+      await delay(500);
+      await audio.play();
+      music.classList.add('active');
+
+      await delay(100);
+      lines[0].classList.add('active');
+
+      await delay(4500);
+      lines[1].classList.add('active');
+
+      await delay(3000);
+      scroll.classList.add('active');
+    }
+
+    if (index === 9) {
+      UI.setMusic('언젠가 우리의 밤도 지나가겠죠', 'BLOOM*IZ');
+
+      lines[0].innerHTML = '언젠가 우리의';
+      lines[1].innerHTML = '밤도 모두 지나가겠죠';
+
+      audio.src = 'music/someday.mp3';
+
+      await delay(500);
+      await audio.play();
+      music.classList.add('active');
+
+      await delay(100);
+      lines[0].classList.add('active');
+
+      await delay(2800);
+      lines[1].classList.add('active');
+
+      await delay(2000);
+      scroll.classList.add('active');
+    }
+
+    if (index === 10) {
+      UI.setMusic('환상동화', 'Oneiric Diary');
+
+      lines[0].innerHTML = '상상했던 모든 순간들이 눈앞에 다가올 그때까지';
+      lines[1].innerHTML = '너를 위한 춤을 춰';
+
+      audio.src = 'music/swan.mp3';
+
+      await delay(500);
+      await audio.play();
+      music.classList.add('active');
+
+      await delay(100);
+      lines[0].classList.add('active');
+
+      await delay(4000);
+      lines[1].classList.add('active');
+
+      await delay(2000);
+      scroll.classList.add('active');
+    }
+
+    if (index === 11) {
+      UI.setMusic('With*One', 'Oneiric Diary');
+
+      lines[0].innerHTML = '예쁘던 우리 기억들로 꽃이 필 거야';
+      lines[1].innerHTML = '설레던 우리 만남처럼';
+
+      audio.src = 'music/with1.mp3';
+
+      await delay(500);
+      await audio.play();
+      audio.currentTime = 0.5;
+
+      music.classList.add('active');
+
+      await delay(100);
+      lines[0].classList.add('active');
+
+      await delay(4500);
+      lines[1].classList.add('active');
+
+      await delay(2000);
+      scroll.classList.add('active');
+    }
+
+    if (index === 12) {
+      UI.setMusic('Panorama', 'One-reeler / Act IV');
+
+      lines[0].innerHTML = '깊은 어둠 속 빛나는 별처럼';
+      lines[1].innerHTML = '우린 어디서든 서로 알아볼 수 있어';
+
+      audio.src = 'music/pano.mp3';
+
+      await delay(500);
+      await audio.play();
+
+      music.classList.add('active');
+
+      await delay(1500);
+      lines[0].classList.add('active');
+
+      await delay(3700);
+      lines[1].classList.add('active');
+
+      await delay(2500);
+      scroll.classList.add('active');
+    }
   }
 }
 
@@ -235,6 +368,13 @@ void land();
 window.addEventListener('mousemove', e => {
   const { clientX: x, clientY: y } = e;
   UI.followCursor(x, y);
+});
+
+window.addEventListener('resize', () => {
+  document.getElementsByClassName('section')[currentSection - 1].scrollIntoView({
+    behavior: 'smooth',
+    top: window.innerHeight,
+  });
 });
 
 document.querySelectorAll('.scroll').forEach(element => {
