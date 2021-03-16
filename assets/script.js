@@ -22,7 +22,7 @@ class UI {
   }
 
   static scroll() {
-    // currentSection = 2;
+    currentSection = 6;
 
     document.getElementsByClassName('section')[currentSection].scrollIntoView({
       behavior: 'smooth',
@@ -114,6 +114,106 @@ class UI {
       lines[0].classList.add('active');
 
       await delay(4900);
+      lines[1].classList.add('active');
+
+      await delay(3000);
+      scroll.classList.add('active');
+    }
+
+    if (index === 3) {
+      UI.setMusic('비올레타', 'HEART*IZ');
+
+      lines[0].innerHTML = '있는 그대로 지금';
+      lines[1].innerHTML = '느낌 그대로 내게 널 보여줘';
+
+      audio.src = 'music/violeta.mp3';
+
+      await delay(500);
+      await audio.play();
+      music.classList.add('active');
+
+      await delay(400);
+      lines[0].classList.add('active');
+
+      await delay(1800);
+      lines[1].classList.add('active');
+
+      await delay(3000);
+      scroll.classList.add('active');
+    }
+
+    if (index === 4) {
+      UI.setMusic('Really Like You', 'HEART*IZ');
+
+      lines[0].innerHTML = 'Really Like You';
+      lines[1].innerHTML = '내 손을 꼭 잡아줘';
+
+      audio.src = 'music/really.mp3';
+
+      await delay(500);
+      await audio.play();
+      music.classList.add('active');
+
+      await delay(100);
+      lines[0].classList.add('active');
+
+      await delay(1800);
+      lines[1].classList.add('active');
+
+      await delay(1600);
+      lines[0].classList.remove('active');
+      lines[1].classList.remove('active');
+
+      await delay(500);
+      lines[0].innerHTML = '이 손 놓지 말아줘';
+      lines[1].innerHTML = '따스한 두 손을 잡고서 꿈꿀 수 있게';
+      lines[0].classList.add('active');
+
+      await delay(2100);
+      lines[1].classList.add('active');
+
+      await delay(3000);
+      scroll.classList.add('active');
+    }
+
+    if (index === 5) {
+      UI.setMusic('기분 좋은 안녕', 'HEART*IZ');
+
+      lines[0].innerHTML = '함께했던 순간이 널 행복하게 할 거야';
+      lines[1].innerHTML = '기쁘게 안녕을 말할래';
+
+      audio.src = 'music/bye.mp3';
+
+      await delay(500);
+      await audio.play();
+      music.classList.add('active');
+
+      await delay(100);
+      lines[0].classList.add('active');
+
+      await delay(3800);
+      lines[1].classList.add('active');
+
+      await delay(3000);
+      scroll.classList.add('active');
+    }
+
+    if (index === 6) {
+      UI.setMusic('FIESTA', 'BLOOM*IZ');
+
+      lines[0].innerHTML = '내 맘에 태양을 꾹 삼킨 채';
+      lines[1].innerHTML = '영원토록 뜨겁게 지지 않을게';
+
+      audio.src = 'music/fiesta.mp3';
+
+      await delay(500);
+      await audio.play();
+      music.classList.add('active');
+
+      await delay(800);
+      lines[0].classList.add('active');
+
+      await delay(2900);
       lines[1].classList.add('active');
 
       await delay(3000);
