@@ -106,7 +106,8 @@ body {
   position: absolute;
   width: 128px;
   height: 128px;
-  left: calc(50% - 128px/2);
+  left: 50%;
+  transform: translateX(-50%);
   bottom: 38px;
   cursor: pointer;
 }
@@ -200,7 +201,8 @@ body {
   opacity: 0;
   width: 128px;
   height: 128px;
-  left: calc(50% - 128px/2);
+  left: 50%;
+  transform: translateX(-50%);
   bottom: 38px;
   transition: 0.5s opacity;
 }
@@ -249,6 +251,7 @@ body {
   line-height: 52px;
   color: #FFFFFF;
   vertical-align: top;
+  white-space: nowrap;
 }
 
 .fixed > .music > .album {
@@ -322,4 +325,107 @@ body {
 
 .sns.youtube {
   left: calc(50% - 52px/2 + 100px);
+}
+
+@media (max-width: 880px) {
+  .landing > .title {
+    font-size: 64px;
+    height: 84px;
+    top: calc(50% - 84px/2 - 75.5px);
+  }
+
+  .landing > .description {
+    font-size: 28px;
+    line-height: 52px;
+  }
+
+  .landing > .description > span.highlight {
+    margin: 0;
+  }
+
+  .fixed > .scroll,
+  .landing > .scroll {
+    width: 96px;
+    height: 96px;
+  }
+
+  .fixed > .music {
+    top: 84px;
+    zoom: 0.7;
+  }
+
+  .fixed > .content {
+    zoom: 0.6;
+    width: 200vw;
+  }
+
+  .fixed > .izone {
+    width: 95px;
+    height: 39px;
+    bottom: 64px;
+    top: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .fixed > .music.left {
+    zoom: 0.7 !important;
+    left: 50%;
+    top: 64px;
+    transform: translateX(-50%);
+  }
+
+  .fixed > .lyrics {
+    top: 138px;
+    left: 36px;
+    right: 36px;
+    text-align: center;
+    font-size: 24px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .landing > .title {
+    font-size: 48px;
+    height: 74px;
+    top: calc(50% - 74px/2 - 75.5px);
+  }
+
+  .landing > .description {
+    font-size: 21px;
+    line-height: 42px;
+  }
+
+  .fixed > .music {
+    top: 96px;
+    zoom: 0.5;
+  }
+
+  .fixed > .content {
+    zoom: 0.5;
+    width: 200vw;
+  }
+}
+
+@media (max-width: 360px) {
+  .landing > .title {
+    font-size: 42px;
+  }
+
+  .landing > .description {
+    font-size: 18px;
+    line-height: 36px;
+  }
+
+  .fixed > .scroll,
+  .landing > .scroll {
+    width: 86px;
+    height: 86px;
+  }
+
+  .fixed > .content {
+    zoom: 0.3;
+    width: 333vw;
+  }
 }

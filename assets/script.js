@@ -60,6 +60,7 @@ class UI {
       void UI.slowJourney();
       return true;
     }
+    currentSection = 12;
 
     document.getElementsByClassName('section')[currentSection].scrollIntoView({
       behavior: 'smooth',
@@ -77,11 +78,11 @@ class UI {
   }
 
   static async move(index) {
-    const lines = document.querySelectorAll('.fixed > .content > .line');
+    //const lines = document.querySelectorAll('.fixed > .content > .line');
     const scroll = document.querySelector('.fixed > .scroll');
     const music = document.querySelector('.fixed > .music');
 
-    scroll.classList.remove('active');
+    scroll.classList.add('active');
     lines.forEach(element => element.classList.remove('active'));
 
     if (index === 0) {
@@ -326,7 +327,7 @@ class UI {
     if (index === 10) {
       UI.setMusic('환상동화', 'Oneiric Diary');
 
-      lines[0].innerHTML = '상상했던 모든 순간들이 눈앞에 다가올 그때까지';
+      lines[0].innerHTML = '상상했던 모든 순간들이<br>눈앞에 다가올 그때까지';
       lines[1].innerHTML = '너를 위한 춤을 춰';
 
       audio.src = 'music/swan.mp3';
