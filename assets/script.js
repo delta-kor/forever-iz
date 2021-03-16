@@ -60,7 +60,6 @@ class UI {
       void UI.slowJourney();
       return true;
     }
-    currentSection = 12;
 
     document.getElementsByClassName('section')[currentSection].scrollIntoView({
       behavior: 'smooth',
@@ -78,7 +77,7 @@ class UI {
   }
 
   static async move(index) {
-    //const lines = document.querySelectorAll('.fixed > .content > .line');
+    const lines = document.querySelectorAll('.fixed > .content > .line');
     const scroll = document.querySelector('.fixed > .scroll');
     const music = document.querySelector('.fixed > .music');
 
