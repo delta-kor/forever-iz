@@ -128,11 +128,11 @@ body {
   transform: translate(-50%, -50%);
   object-fit: cover;
   object-position: 50% 50%;
+  transition: 0.5s opacity;
 }
 
 .section > .cover.active {
   opacity: 1;
-  transition: 0.5s opacity;
 }
 
 .fixed {
@@ -226,6 +226,15 @@ body {
   opacity: 1;
 }
 
+.fixed > .music.left {
+  position: absolute;
+  height: 78px;
+  width: 254px;
+  left: 170px;
+  top: 140px;
+  transform: none;
+}
+
 .fixed > .music > .icon {
   margin: 15px 43px 15px 0;
 }
@@ -254,4 +263,63 @@ body {
   line-height: 26px;
   color: #B8B8B8;
   vertical-align: bottom;
+}
+
+.fixed > .izone {
+  position: absolute;
+  width: 275px;
+  height: 113px;
+  right: 170px;
+  top: 140px;
+  opacity: 0;
+  transition: 0.5s opacity;
+}
+
+.fixed > .izone.active {
+  opacity: 1;
+}
+
+.fixed > .lyrics {
+  position: absolute;
+  height: 52px;
+  left: 170px;
+  top: 248px;
+  font-family: Noto Sans KR, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 52px;
+  color: #FFFFFF;
+  opacity: 0;
+  transition: 0.5s opacity;
+}
+
+.fixed > .lyrics.active {
+  opacity: 1;
+}
+
+.sns {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  opacity: 0;
+  transition: 0.5s opacity;
+  bottom: 170px;
+}
+
+.sns.active {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.sns.twitter {
+  left: calc(50% - 52px/2 - 100px);
+}
+
+.sns.instagram {
+  left: calc(50% - 52px/2);
+}
+
+.sns.youtube {
+  left: calc(50% - 52px/2 + 100px);
 }

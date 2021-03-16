@@ -21,7 +21,46 @@ class UI {
     state ? highlight.classList.add('active') : highlight.classList.remove('active');
   }
 
+  static async slowJourney() {
+    audio.src = 'music/slow.mp3';
+    await audio.play();
+
+    const element = document.querySelector('.fixed > .lyrics');
+    const timestamps = Object.keys(lyrics);
+    const timeDelta = [];
+
+    let index = 0;
+    for (const timestamp of timestamps) {
+      const delta = timestamps[index + 1] - timestamp;
+      timeDelta.push(delta);
+      index++;
+    }
+
+    await delay(5000);
+    UI.setMusic('느린 여행', 'One-reeler / Act IV');
+    document.querySelector('.fixed > .music').classList.add('left', 'active');
+    document.querySelector('.fixed > .izone').classList.add('active');
+
+    await delay(timestamps[0] - 5000);
+    element.classList.add('active');
+    document.querySelectorAll('.sns').forEach(element => element.classList.add('active'));
+
+    let current = 1;
+    for await (const delta of timeDelta) {
+      await delay(delta);
+      element.textContent = lyrics[timestamps[current]];
+      current++;
+    }
+  }
+
   static scroll() {
+    if (currentSection === 13) {
+      const image = document.querySelector('body > div:nth-child(14) > img');
+      image.classList.remove('active');
+      void UI.slowJourney();
+      return true;
+    }
+
     document.getElementsByClassName('section')[currentSection].scrollIntoView({
       behavior: 'smooth',
       top: window.innerHeight,
