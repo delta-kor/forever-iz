@@ -97,14 +97,17 @@ class UI {
       lines[1].innerHTML = 'Have you ever seen this <span class="highlight">color?</span>';
       const highlight = document.querySelector('.fixed > .content > .line > .highlight');
 
+      const screen = document.querySelector('.fixed > .screen');
+
       audio.src = 'music/colors.mp3';
 
-      await delay(500);
+      await delay(1500);
       await audio.play();
 
       await delay(300);
       lines[0].classList.add('active');
       music.classList.add('active');
+      screen.classList.add('active');
 
       await delay(4000);
       lines[1].classList.add('active');
@@ -415,6 +418,7 @@ window.addEventListener('mousemove', e => {
 });
 
 window.addEventListener('resize', () => {
+  if (currentSection === 0) return window.scrollTo(0, 0);
   document.getElementsByClassName('section')[currentSection - 1].scrollIntoView({
     top: window.innerHeight,
   });
@@ -444,4 +448,9 @@ document.querySelectorAll('.scroll').forEach(element => {
 
     UI.scroll();
   });
+});
+
+document.querySelector('.fixed > .screen').addEventListener('click', () => {
+  const isFullScreen = document.webkitIsFullScreen || document.mozFullScreen || false;
+  !isFullScreen ? document.documentElement.requestFullscreen() : document.exitFullscreen();
 });

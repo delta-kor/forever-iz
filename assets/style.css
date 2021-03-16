@@ -301,6 +301,21 @@ body {
   opacity: 1;
 }
 
+.fixed > .screen {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  right: 48px;
+  bottom: 48px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.fixed > .screen.active {
+  opacity: 1;
+  transition: 0.5s opacity;
+}
+
 .sns {
   position: absolute;
   display: none;
@@ -386,6 +401,13 @@ body.journey .sns {
     right: 36px;
     text-align: center;
     font-size: 24px;
+  }
+
+  .fixed > .screen {
+    right: 36px;
+    bottom: 36px;
+    width: 32px;
+    height: 32px;
   }
 
 }
