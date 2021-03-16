@@ -93,14 +93,14 @@ class UI {
 
       audio.src = 'music/colors.mp3';
 
+      await delay(500);
       await audio.play();
-      audio.currentTime = 1;
 
-      await delay(800);
+      await delay(300);
       lines[0].classList.add('active');
       music.classList.add('active');
 
-      await delay(4800);
+      await delay(4000);
       lines[1].classList.add('active');
 
       await delay(1350);
@@ -125,7 +125,7 @@ class UI {
       await audio.play();
       music.classList.add('active');
 
-      await delay(500);
+      await delay(0);
       lines[0].classList.add('active');
 
       await delay(3800);
@@ -147,7 +147,7 @@ class UI {
       await audio.play();
       music.classList.add('active');
 
-      await delay(500);
+      await delay(0);
       lines[0].classList.add('active');
 
       await delay(4900);
@@ -169,7 +169,7 @@ class UI {
       await audio.play();
       music.classList.add('active');
 
-      await delay(400);
+      await delay(0);
       lines[0].classList.add('active');
 
       await delay(1800);
@@ -250,7 +250,7 @@ class UI {
       await delay(800);
       lines[0].classList.add('active');
 
-      await delay(2900);
+      await delay(2700);
       lines[1].classList.add('active');
 
       await delay(3000);
@@ -294,7 +294,7 @@ class UI {
       await delay(100);
       lines[0].classList.add('active');
 
-      await delay(4500);
+      await delay(4200);
       lines[1].classList.add('active');
 
       await delay(3000);
@@ -313,10 +313,10 @@ class UI {
       await audio.play();
       music.classList.add('active');
 
-      await delay(100);
+      await delay(0);
       lines[0].classList.add('active');
 
-      await delay(2800);
+      await delay(2500);
       lines[1].classList.add('active');
 
       await delay(2000);
@@ -355,14 +355,13 @@ class UI {
 
       await delay(500);
       await audio.play();
-      audio.currentTime = 0.5;
 
       music.classList.add('active');
 
       await delay(100);
       lines[0].classList.add('active');
 
-      await delay(4500);
+      await delay(4800);
       lines[1].classList.add('active');
 
       await delay(2000);
@@ -385,7 +384,7 @@ class UI {
       await delay(1500);
       lines[0].classList.add('active');
 
-      await delay(3700);
+      await delay(3200);
       lines[1].classList.add('active');
 
       await delay(2500);
