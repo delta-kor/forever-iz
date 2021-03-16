@@ -54,6 +54,10 @@ class UI {
   }
 
   static scroll() {
+    if (currentSection === 0) {
+      document.documentElement.requestFullscreen();
+    }
+
     if (currentSection === 13) {
       const image = document.querySelector('body > div:nth-child(14) > img');
       image.classList.remove('active');
@@ -81,7 +85,7 @@ class UI {
     const scroll = document.querySelector('.fixed > .scroll');
     const music = document.querySelector('.fixed > .music');
 
-    scroll.classList.add('active');
+    scroll.classList.remove('active');
     lines.forEach(element => element.classList.remove('active'));
 
     if (index === 0) {
