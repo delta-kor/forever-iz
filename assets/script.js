@@ -22,7 +22,7 @@ class UI {
   }
 
   static scroll() {
-    currentSection = 6;
+    // currentSection = 6;
 
     document.getElementsByClassName('section')[currentSection].scrollIntoView({
       behavior: 'smooth',
