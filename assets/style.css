@@ -303,11 +303,16 @@ body {
 
 .sns {
   position: absolute;
+  display: none;
   width: 52px;
   height: 52px;
   opacity: 0;
   transition: 0.5s opacity;
   bottom: 170px;
+}
+
+body.journey .sns {
+  display: block;
 }
 
 .sns.active {

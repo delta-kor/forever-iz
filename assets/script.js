@@ -22,6 +22,8 @@ class UI {
   }
 
   static async slowJourney() {
+    document.body.classList.add('journey');
+
     audio.src = 'music/slow.mp3';
     await audio.play();
 
