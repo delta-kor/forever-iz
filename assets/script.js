@@ -1,4 +1,5 @@
 let currentSection = 0;
+const totalSection = document.querySelectorAll('.section').length;
 const audio = new Audio();
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
@@ -57,10 +58,15 @@ class UI {
 
   static scroll() {
     if (currentSection === 0) {
-      document.documentElement.requestFullscreen();
+      void document.documentElement.requestFullscreen();
     }
 
     if (currentSection === 13) {
+      const indicator = document.querySelector('.fixed > .indicator');
+      indicator.style.width = '100vw';
+      delay(500).then(() => {
+        indicator.style.opacity = '0';
+      });
       const image = document.querySelector('body > div:nth-child(14) > img');
       image.classList.remove('active');
       void UI.slowJourney();
@@ -74,6 +80,10 @@ class UI {
 
     void UI.move(currentSection);
     currentSection++;
+
+    document.querySelector('.fixed > .indicator').style.width = `${
+      ((currentSection - 1) / totalSection) * 100
+    }vw`;
   }
 
   static setMusic(title, album) {

@@ -316,6 +316,18 @@ body {
   transition: 0.5s opacity;
 }
 
+.fixed > .indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0;
+  background: #FFFFFF;
+  opacity: 1;
+  z-index: 3;
+  transition: 0.5s;
+}
+
 .sns {
   position: absolute;
   display: none;
