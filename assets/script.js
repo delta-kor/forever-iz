@@ -456,7 +456,7 @@ async function land() {
   await audio.play();
   audio.currentTime = 3;
 
-  await delay(1700);
+  await delay(1800);
   UI.highlight(true);
 }
 
