@@ -74,10 +74,6 @@ class UI {
   }
 
   static scroll() {
-    if (currentSection === 0) {
-      void document.documentElement.requestFullscreen();
-    }
-
     if (currentSection === 13) {
       const indicator = document.querySelector('.fixed > .indicator');
 
@@ -433,6 +429,7 @@ class UI {
 
   static hideStartUp() {
     document.querySelector('.startup').classList.add('hide');
+    void document.documentElement.requestFullscreen();
     void land();
   }
 
