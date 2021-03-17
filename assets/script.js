@@ -6,6 +6,7 @@ if ('scrollRestoration' in history) {
 }
 
 const audios = [
+  'universe.mp3',
   'colors.mp3',
   'rose.mp3',
   'memory.mp3',
@@ -37,6 +38,7 @@ class UI {
   static highlight(state) {
     const highlight = document.querySelector('.landing > .description > span.highlight');
     state ? highlight.classList.add('active') : highlight.classList.remove('active');
+    document.querySelector('.landing > .scroll').classList.add('active');
   }
 
   static async slowJourney() {
@@ -449,7 +451,12 @@ async function delay(ms) {
 }
 
 async function land() {
-  await delay(500);
+  audio.src = 'music/universe.mp3';
+
+  await audio.play();
+  audio.currentTime = 3;
+
+  await delay(1700);
   UI.highlight(true);
 }
 
@@ -470,22 +477,19 @@ document.querySelectorAll('.scroll').forEach(element => {
     if (!element.classList.contains('active')) return;
 
     const lines = document.querySelectorAll('.fixed > .content > .line');
-    const scroll = document.querySelector('.fixed > .scroll');
     const music = document.querySelector('.fixed > .music');
 
-    scroll.classList.remove('active');
+    element.classList.remove('active');
     lines.forEach(element => element.classList.remove('active'));
 
     music.classList.remove('active');
 
-    if (element.dataset.type !== 'top') {
-      for (let i = 0; i < 99; i++) {
-        await delay(5);
-        audio.volume -= 1 / 100;
-      }
-      audio.pause();
-      audio.volume = 1;
+    for (let i = 0; i < 99; i++) {
+      await delay(5);
+      audio.volume -= 1 / 100;
     }
+    audio.pause();
+    audio.volume = 1;
 
     UI.scroll();
   });
@@ -497,14 +501,18 @@ document.querySelector('.fixed > .screen').addEventListener('click', () => {
 });
 
 async function load() {
-  const images = document.getElementsByTagName('img');
+  const images = [...document.querySelectorAll('img.cover')].slice(0, 5);
+  const total = images.length + audios.length;
   let loaded = 0;
 
   function onLoaded() {
     loaded++;
-    const total = images.length + audios.length;
     UI.updateLoadIndicator(loaded / total);
   }
+
+  delay(5000).then(() => {
+    UI.updateLoadIndicator(1);
+  });
 
   for (/** @type {HTMLImageElement} */ const image of images) {
     if (image.complete) {
@@ -520,6 +528,7 @@ async function load() {
     const audio = new Audio();
     audio.addEventListener('canplaythrough', onLoaded, false);
     audio.src = fullURL;
+    audio.load();
   }
 }
 

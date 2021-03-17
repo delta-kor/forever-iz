@@ -109,7 +109,13 @@ body {
   left: 50%;
   transform: translateX(-50%);
   bottom: 38px;
+  opacity: 0;
+  transition: 0.5s opacity;
   cursor: pointer;
+}
+
+.landing > .scroll.active {
+  opacity: 1;
 }
 
 .section {
@@ -322,7 +328,7 @@ body {
   left: 0;
   height: 4px;
   width: 0;
-  background: #FFFFFF;
+  background: linear-gradient(270deg, #FF50A0 0%, #FF298B 100%);
   opacity: 1;
   z-index: 3;
   transition: 0.5s;
@@ -404,6 +410,7 @@ body.journey .sns {
   top: calc(50% - 94px/2 + 184px);
   background: #3F3F3F;
   border-radius: 18px;
+  overflow: hidden;
   cursor: not-allowed;
 }
 
