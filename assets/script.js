@@ -5,6 +5,23 @@ if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
 
+const audios = [
+  'colors.mp3',
+  'rose.mp3',
+  'memory.mp3',
+  'violeta.mp3',
+  'really.mp3',
+  'bye.mp3',
+  'fiesta.mp3',
+  'spaceship.mp3',
+  'uni.mp3',
+  'someday.mp3',
+  'swan.mp3',
+  'with1.mp3',
+  'pano.mp3',
+  'slow.mp3',
+];
+
 class UI {
   static followCursor(x, y) {
     const landingCover = document.querySelector('.landing > .cover');
@@ -410,6 +427,21 @@ class UI {
       scroll.classList.add('active');
     }
   }
+
+  static hideStartUp() {
+    document.querySelector('.startup').classList.add('hide');
+    void land();
+  }
+
+  static updateLoadIndicator(percent) {
+    document.querySelector('.startup > .button > .indicator').style.width = `${percent * 100}%`;
+    if (percent === 1) {
+      document.querySelector('.startup > .button > .content').textContent = '시작하기';
+      const button = document.querySelector('.startup > .button');
+      button.style.cursor = 'pointer';
+      button.addEventListener('click', UI.hideStartUp);
+    }
+  }
 }
 
 async function delay(ms) {
@@ -420,7 +452,6 @@ async function land() {
   await delay(500);
   UI.highlight(true);
 }
-void land();
 
 window.addEventListener('mousemove', e => {
   const { clientX: x, clientY: y } = e;
@@ -464,3 +495,32 @@ document.querySelector('.fixed > .screen').addEventListener('click', () => {
   const isFullScreen = document.webkitIsFullScreen || document.mozFullScreen || false;
   !isFullScreen ? document.documentElement.requestFullscreen() : document.exitFullscreen();
 });
+
+async function load() {
+  const images = document.getElementsByTagName('img');
+  let loaded = 0;
+
+  function onLoaded() {
+    loaded++;
+    const total = images.length + audios.length;
+    UI.updateLoadIndicator(loaded / total);
+  }
+
+  for (/** @type {HTMLImageElement} */ const image of images) {
+    if (image.complete) {
+      onLoaded();
+      continue;
+    }
+
+    image.addEventListener('load', onLoaded);
+  }
+
+  for (const url of audios) {
+    const fullURL = `music/${url}`;
+    const audio = new Audio();
+    audio.addEventListener('canplaythrough', onLoaded, false);
+    audio.src = fullURL;
+  }
+}
+
+void load();

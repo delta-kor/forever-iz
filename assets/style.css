@@ -359,6 +359,95 @@ body.journey .sns {
   left: calc(50% - 52px/2 + 100px);
 }
 
+.startup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  z-index: 100;
+}
+
+.startup.hide {
+  display: none;
+}
+
+.startup > .volume {
+  position: absolute;
+  width: 148px;
+  height: 148px;
+  left: calc(50% - 148px/2);
+  top: calc(50% - 148px/2 - 195px);
+}
+
+.startup > .title {
+  position: absolute;
+  height: 140px;
+  left: 50%;
+  top: calc(50% - 140px/2 - 29px);
+  transform: translateX(-50%);
+  font-family: Noto Sans KR, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 70px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.startup > .button {
+  position: absolute;
+  width: 412px;
+  height: 94px;
+  left: calc(50% - 412px/2);
+  top: calc(50% - 94px/2 + 184px);
+  background: #3F3F3F;
+  border-radius: 18px;
+  cursor: not-allowed;
+}
+
+.startup > .button > .content {
+  position: absolute;
+  top: 21px;
+  bottom: 21px;
+  left: 0;
+  right: 0;
+  font-family: Noto Sans KR, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 52px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.startup > .button > .indicator {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  background: linear-gradient(270deg, #FF50A0 0%, #FF298B 100%);
+  border-radius: 18px;
+  transition: 0.5s;
+}
+
+.startup > .version {
+  position: absolute;
+  height: 29px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 28px;
+  font-family: Product Sans, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
 @media (max-width: 880px) {
   .landing > .title {
     font-size: 64px;
