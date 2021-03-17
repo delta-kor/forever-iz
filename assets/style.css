@@ -511,6 +511,22 @@ body.journey .sns {
     height: 32px;
   }
 
+  .startup > .volume {
+    width: 108px;
+    height: 108px;
+    left: calc(50% - 108px/2);
+    top: calc(50% - 108px/2 - 195px);
+  }
+
+  .startup > .title {
+    font-size: 36px;
+    width: 100%;
+  }
+
+  .startup > .button {
+    zoom: 0.9;
+  }
+
 }
 
 @media (max-width: 480px) {
@@ -534,6 +550,22 @@ body.journey .sns {
     zoom: 0.5;
     width: 200vw;
   }
+
+  .startup > .volume {
+    width: 86px;
+    height: 86px;
+    left: calc(50% - 86px/2);
+    top: calc(50% - 86px/2 - 195px);
+  }
+
+  .startup > .title {
+    font-size: 32px;
+    width: 100%;
+  }
+
+  .startup > .button {
+    zoom: 0.7;
+  }
 }
 
 @media (max-width: 360px) {
@@ -555,5 +587,21 @@ body.journey .sns {
   .fixed > .content {
     zoom: 0.3;
     width: 333vw;
+  }
+
+  .startup > .volume {
+    width: 74px;
+    height: 74px;
+    left: calc(50% - 74px/2);
+    top: calc(50% - 74px/2 - 195px);
+  }
+
+  .startup > .title {
+    font-size: 28px;
+    width: 100%;
+  }
+
+  .startup > .button {
+    zoom: 0.6;
   }
 }
