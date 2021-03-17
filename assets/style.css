@@ -41,6 +41,12 @@ body {
   transform: translate(-50%, -50%);
   object-fit: cover;
   object-position: 50% 50%;
+  filter: grayscale(100%);
+  transition: 0.5s filter;
+}
+
+.landing > .cover.light {
+  filter: grayscale(0);
 }
 
 .landing > .title {

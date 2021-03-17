@@ -39,6 +39,7 @@ class UI {
     const highlight = document.querySelector('.landing > .description > span.highlight');
     state ? highlight.classList.add('active') : highlight.classList.remove('active');
     document.querySelector('.landing > .scroll').classList.add('active');
+    document.querySelector('.landing > .cover').classList.add('light');
   }
 
   static async slowJourney() {
