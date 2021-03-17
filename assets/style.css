@@ -330,11 +330,11 @@ body {
 
 .fixed > .indicator {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
-  height: 4px;
+  height: 8px;
   width: 0;
-  background: linear-gradient(270deg, #FF50A0 0%, #FF298B 100%);
+  background: #FFFFFF;
   opacity: 1;
   z-index: 3;
   transition: 0.5s;
@@ -440,7 +440,7 @@ body.journey .sns {
   top: 0;
   bottom: 0;
   left: 0;
-  width: 50%;
+  width: 0;
   background: linear-gradient(270deg, #FF50A0 0%, #FF298B 100%);
   border-radius: 18px;
   transition: 0.5s;
