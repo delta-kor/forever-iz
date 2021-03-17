@@ -80,12 +80,15 @@ class UI {
 
     if (currentSection === 13) {
       const indicator = document.querySelector('.fixed > .indicator');
+
       indicator.style.width = '100vw';
       delay(500).then(() => {
         indicator.style.opacity = '0';
       });
-      const image = document.querySelector('body > div:nth-child(14) > img');
+
+      const image = document.querySelector('.section.last > .cover');
       image.classList.remove('active');
+
       void UI.slowJourney();
       return true;
     }
