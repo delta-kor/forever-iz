@@ -3,7 +3,7 @@
 함께여서 빛났던 모든 순간들과  
 함께이기에 계속될 우리의 이야기  
   
-[http://lt2.kr](http://lt2.kr)
+[https://forever-iz.ga](https://forever-iz.ga)  
 
 ## Audios
 ### COLOR*IZ
