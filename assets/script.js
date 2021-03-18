@@ -5,24 +5,6 @@ if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
 
-const audios = [
-  'universe.mp3',
-  'colors.mp3',
-  'rose.mp3',
-  'memory.mp3',
-  'violeta.mp3',
-  'really.mp3',
-  'bye.mp3',
-  'fiesta.mp3',
-  'spaceship.mp3',
-  'uni.mp3',
-  'someday.mp3',
-  'swan.mp3',
-  'with1.mp3',
-  'pano.mp3',
-  'slow.mp3',
-];
-
 class UI {
   static followCursor(x, y) {
     const landingCover = document.querySelector('.landing > .cover');
@@ -498,21 +480,16 @@ document.querySelector('.fixed > .screen').addEventListener('click', () => {
 
 async function load() {
   let passed = false;
-
-  const images = [...document.querySelectorAll('img.cover')].slice(0, 5);
-  const total = images.length + audios.length;
   let loaded = 0;
+
+  const images = [...document.querySelectorAll('img.cover')];
+  const total = images.length;
 
   function onLoaded() {
     loaded++;
     if (passed) return false;
     UI.updateLoadIndicator(loaded / total);
   }
-
-  delay(5000).then(() => {
-    UI.updateLoadIndicator(1);
-    passed = true;
-  });
 
   for (/** @type {HTMLImageElement} */ const image of images) {
     if (image.complete) {
@@ -523,13 +500,10 @@ async function load() {
     image.addEventListener('load', onLoaded);
   }
 
-  for (const url of audios) {
-    const fullURL = `music/${url}`;
-    const audio = new Audio();
-    audio.addEventListener('canplaythrough', onLoaded, false);
-    audio.src = fullURL;
-    audio.load();
-  }
+  delay(5000).then(() => {
+    UI.updateLoadIndicator(1);
+    passed = true;
+  });
 }
 
 void load();
