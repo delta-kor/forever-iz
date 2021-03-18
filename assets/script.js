@@ -5,6 +5,14 @@ if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
 
+const search = new URLSearchParams(location.search);
+const isEnding = search.has('ending');
+
+const version = document.querySelector('.startup > .version');
+version.textContent = 'vc46-210318';
+
+if (isEnding) version.textContent += ' (#ending)';
+
 class UI {
   static followCursor(x, y) {
     const landingCover = document.querySelector('.landing > .cover');
@@ -108,8 +116,6 @@ class UI {
       lines[1].innerHTML = 'Have you ever seen this <span class="highlight">color?</span>';
       const highlight = document.querySelector('.fixed > .content > .line > .highlight');
 
-      const screen = document.querySelector('.fixed > .screen');
-
       audio.src = 'music/colors.mp3';
 
       await delay(1500);
@@ -118,7 +124,7 @@ class UI {
       await delay(300);
       lines[0].classList.add('active');
       music.classList.add('active');
-      screen.classList.add('active');
+      UI.displayScreen();
 
       await delay(4000);
       lines[1].classList.add('active');
@@ -414,8 +420,13 @@ class UI {
 
   static hideStartUp() {
     document.querySelector('.startup').classList.add('hide');
+    if (isEnding) {
+      document.querySelector('.landing').classList.add('hide');
+      UI.displayScreen('replay');
+      return UI.slowJourney();
+    }
     void document.documentElement.requestFullscreen();
-    void land();
+    return land();
   }
 
   static updateLoadIndicator(percent) {
@@ -425,6 +436,20 @@ class UI {
       const button = document.querySelector('.startup > .button');
       button.style.cursor = 'pointer';
       button.addEventListener('click', UI.hideStartUp);
+    }
+  }
+
+  static displayScreen(type) {
+    const screen = document.querySelector('.fixed > .screen');
+
+    if (type === 'replay') {
+      screen.addEventListener('load', () => {
+        screen.classList.add('active');
+      });
+      screen.src = 'assets/icon/replay.svg';
+      screen.dataset.type = 'replay';
+    } else {
+      screen.classList.add('active');
     }
   }
 }
@@ -450,6 +475,11 @@ window.addEventListener('resize', () => {
   });
 });
 
+window.addEventListener('mousemove', e => {
+  const { clientX: x, clientY: y } = e;
+  UI.followCursor(x, y);
+});
+
 document.querySelectorAll('.scroll').forEach(element => {
   element.addEventListener('click', async () => {
     if (!element.classList.contains('active')) return;
@@ -473,7 +503,8 @@ document.querySelectorAll('.scroll').forEach(element => {
   });
 });
 
-document.querySelector('.fixed > .screen').addEventListener('click', () => {
+document.querySelector('.fixed > .screen').addEventListener('click', e => {
+  if (e.target.dataset.type === 'replay') return (location.href = './');
   const isFullScreen = document.webkitIsFullScreen || document.mozFullScreen || false;
   !isFullScreen ? document.documentElement.requestFullscreen() : document.exitFullscreen();
 });

@@ -32,6 +32,10 @@ body {
   z-index: 1;
 }
 
+.landing.hide {
+  display: none;
+}
+
 .landing > .cover {
   position: absolute;
   width: 110%;
@@ -451,6 +455,7 @@ body.journey .sns {
 .startup > .version {
   position: absolute;
   height: 29px;
+  width: 100%;
   left: 50%;
   transform: translateX(-50%);
   bottom: 28px;
@@ -513,8 +518,8 @@ body.journey .sns {
 
   .fixed > .lyrics {
     top: 138px;
-    left: 36px;
-    right: 36px;
+    left: 8px;
+    right: 8px;
     text-align: center;
     font-size: 24px;
   }
