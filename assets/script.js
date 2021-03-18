@@ -9,7 +9,7 @@ const search = new URLSearchParams(location.search);
 const isEnding = search.has('ending');
 
 const version = document.querySelector('.startup > .version');
-version.textContent = 'vc50-210318';
+version.textContent = 'vc51-210318';
 
 if (isEnding) version.textContent += ' (#ending)';
 
@@ -19,6 +19,31 @@ function log(type) {
 }
 
 class UI {
+  static fullScreen(full) {
+    const doc = document.documentElement;
+    if (full) {
+      if (doc.requestFullscreen) {
+        doc.requestFullscreen();
+      } else if (doc.mozRequestFullScreen) {
+        doc.mozRequestFullScreen();
+      } else if (doc.webkitRequestFullscreen) {
+        doc.webkitRequestFullscreen();
+      } else if (doc.msRequestFullscreen) {
+        doc.msRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitCancelFullScreen) {
+        document.webkitCancelFullScreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+    }
+  }
+
   static followCursor(x, y) {
     const landingCover = document.querySelector('.landing > .cover');
     const { innerWidth: width, innerHeight: height } = window;
@@ -436,7 +461,7 @@ class UI {
       UI.displayScreen('replay');
       return UI.slowJourney();
     }
-    void document.documentElement.requestFullscreen();
+    UI.fullScreen(true);
     return land();
   }
 
@@ -523,7 +548,7 @@ document.querySelector('.fixed > .screen').addEventListener('click', e => {
   }
   const isFullScreen = document.webkitIsFullScreen || document.mozFullScreen || false;
   log(`fullscreen_${!isFullScreen}`);
-  !isFullScreen ? document.documentElement.requestFullscreen() : document.exitFullscreen();
+  UI.fullScreen(!isFullScreen);
 });
 
 async function load() {
@@ -553,6 +578,7 @@ async function load() {
   delay(5000).then(() => {
     UI.updateLoadIndicator(1);
     passed = true;
+    window.scroll(0, 0);
   });
 }
 
