@@ -461,16 +461,6 @@ async function land() {
   UI.highlight(true);
 }
 
-window.addEventListener('touchmove', e => {
-  const { clientX: x, clientY: y } = e.touches[0];
-  UI.followCursor(x, y);
-});
-
-window.addEventListener('mousemove', e => {
-  const { clientX: x, clientY: y } = e;
-  UI.followCursor(x, y);
-});
-
 window.addEventListener('resize', () => {
   if (currentSection === 0) return window.scrollTo(0, 0);
   document.getElementsByClassName('section')[currentSection - 1].scrollIntoView({
