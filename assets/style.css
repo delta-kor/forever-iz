@@ -42,11 +42,13 @@ body {
   object-fit: cover;
   object-position: 50% 50%;
   filter: grayscale(100%);
-  transition: 0.5s filter;
+  transition: 0.5s width, 0.5s height, 0.5s filter;
 }
 
 .landing > .cover.light {
   filter: grayscale(0);
+  width: 150%;
+  height: 150%;
 }
 
 .landing > .title {
@@ -538,6 +540,11 @@ body.journey .sns {
 
   .startup > .button {
     zoom: 0.9;
+  }
+
+  .landing > .cover.light {
+    width: 130%;
+    height: 130%;
   }
 
 }

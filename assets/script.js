@@ -461,6 +461,11 @@ async function land() {
   UI.highlight(true);
 }
 
+window.addEventListener('touchmove', e => {
+  const { clientX: x, clientY: y } = e.touches[0];
+  UI.followCursor(x, y);
+});
+
 window.addEventListener('mousemove', e => {
   const { clientX: x, clientY: y } = e;
   UI.followCursor(x, y);
@@ -502,17 +507,21 @@ document.querySelector('.fixed > .screen').addEventListener('click', () => {
 });
 
 async function load() {
+  let passed = false;
+
   const images = [...document.querySelectorAll('img.cover')].slice(0, 5);
   const total = images.length + audios.length;
   let loaded = 0;
 
   function onLoaded() {
     loaded++;
+    if (passed) return false;
     UI.updateLoadIndicator(loaded / total);
   }
 
   delay(5000).then(() => {
     UI.updateLoadIndicator(1);
+    passed = true;
   });
 
   for (/** @type {HTMLImageElement} */ const image of images) {
