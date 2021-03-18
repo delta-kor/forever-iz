@@ -4,7 +4,6 @@
 함께이기에 계속될 우리의 이야기  
   
 [https://forever-iz.ga](https://forever-iz.ga)  
-[http://lt2.kr (Alternative)](http://lt2.kr)
 
 ## Audios
 ### COLOR*IZ
