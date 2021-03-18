@@ -9,9 +9,14 @@ const search = new URLSearchParams(location.search);
 const isEnding = search.has('ending');
 
 const version = document.querySelector('.startup > .version');
-version.textContent = 'vc49-210318';
+version.textContent = 'vc50-210318';
 
 if (isEnding) version.textContent += ' (#ending)';
+
+const session = Math.random().toString(36).substring(3);
+function log(type) {
+  void fetch(`./log.json?type=${type}&iz=${session}`);
+}
 
 class UI {
   static followCursor(x, y) {
@@ -33,6 +38,8 @@ class UI {
   }
 
   static async slowJourney() {
+    log('journey');
+
     document.body.classList.add('journey');
 
     audio.src = 'music/slow.mp3';
@@ -58,6 +65,8 @@ class UI {
     element.classList.add('active');
     document.querySelectorAll('.sns').forEach(element => element.classList.add('active'));
 
+    log('journey_lyrics');
+
     let current = 1;
     for await (const delta of timeDelta) {
       await delay(delta);
@@ -81,6 +90,8 @@ class UI {
       void UI.slowJourney();
       return true;
     }
+
+    log(`scroll_${currentSection}`);
 
     document.getElementsByClassName('section')[currentSection].scrollIntoView({
       behavior: 'smooth',
@@ -459,6 +470,8 @@ async function delay(ms) {
 }
 
 async function land() {
+  log('land');
+
   audio.src = 'music/universe.mp3';
 
   await audio.play();
@@ -504,12 +517,18 @@ document.querySelectorAll('.scroll').forEach(element => {
 });
 
 document.querySelector('.fixed > .screen').addEventListener('click', e => {
-  if (e.target.dataset.type === 'replay') return (location.href = './');
+  if (e.target.dataset.type === 'replay') {
+    log('replay');
+    return (location.href = './');
+  }
   const isFullScreen = document.webkitIsFullScreen || document.mozFullScreen || false;
+  log(`fullscreen_${!isFullScreen}`);
   !isFullScreen ? document.documentElement.requestFullscreen() : document.exitFullscreen();
 });
 
 async function load() {
+  log('load');
+
   let passed = false;
   let loaded = 0;
 
