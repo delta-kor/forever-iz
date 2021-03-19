@@ -9,7 +9,7 @@ const search = new URLSearchParams(location.search);
 const isEnding = search.has('ending');
 
 const version = document.querySelector('.startup > .version');
-version.textContent = 'vc51-210318';
+version.textContent = 'vc53-210318';
 
 if (isEnding) version.textContent += ' (#ending)';
 
