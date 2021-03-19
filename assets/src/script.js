@@ -1,3 +1,28 @@
+const fonts = [
+  new FontFace(
+    'Product Sans',
+    `url(assets/font/product_sans_bold.woff2) format('woff2'), url(assets/font/product_sans_bold.woff) format('woff')`,
+    { weight: 700 }
+  ),
+  new FontFace(
+    'Noto Sans KR',
+    `url(assets/font/noto_regular.woff2) format('woff2'), url(assets/font/noto_regular.woff) format('woff')`,
+    { weight: 400 }
+  ),
+  new FontFace(
+    'Noto Sans KR',
+    `url(assets/font/noto_medium.woff2) format('woff2'), url(assets/font/noto_medium.woff) format('woff')`,
+    { weight: 500 }
+  ),
+  new FontFace(
+    'Noto Sans KR',
+    `url(assets/font/noto_bold.woff2) format('woff2'), url(assets/font/noto_bold.woff) format('woff')`,
+    { weight: 700 }
+  ),
+];
+
+fonts.forEach(font => font.load().then(() => document.fonts.add(font)));
+
 let currentSection = 0;
 const totalSection = document.querySelectorAll('.section').length;
 const audio = new Audio();
