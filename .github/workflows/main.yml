@@ -1,0 +1,14 @@
+name: Lighthouse
+on: deployment
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v7
+        with:
+          urls: |
+            https://forever-iz.ga/
+          uploadArtifacts: true
+          temporaryPublicStorage: true
