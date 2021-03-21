@@ -34,7 +34,7 @@ const search = new URLSearchParams(location.search);
 const isEnding = search.has('ending');
 
 const version = document.querySelector('.startup > .version');
-version.textContent = 'vc57-210319';
+version.textContent = 'vc63-210321';
 
 if (isEnding) version.textContent += ' (#ending)';
 
@@ -493,6 +493,7 @@ class UI {
   static updateLoadIndicator(percent) {
     document.querySelector('.startup > .button > .indicator').style.width = `${percent * 100}%`;
     if (percent === 1) {
+      log('load_complete');
       document.querySelector('.startup > .button > .content').textContent = '시작하기';
       const button = document.querySelector('.startup > .button');
       button.style.cursor = 'pointer';
@@ -577,7 +578,7 @@ document.querySelector('.fixed > .screen').addEventListener('click', e => {
 });
 
 async function load() {
-  log('load');
+  log(`load_${window.innerWidth}:${window.innerHeight}`);
 
   let passed = false;
   let loaded = 0;
