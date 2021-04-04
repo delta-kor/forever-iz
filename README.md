@@ -3,7 +3,7 @@
 함께여서 빛났던 모든 순간들과  
 함께이기에 계속될 우리의 이야기  
   
-[forever-iz.ga](https://forever-iz.ga)  
+[forever-iz.ga](https://forever-iz.ga/)  
 
 [![Lighthouse](https://github.com/delta-kor/forever-iz/actions/workflows/main.yml/badge.svg)](https://github.com/delta-kor/forever-iz/actions/workflows/main.yml)
 
