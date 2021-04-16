@@ -32,5 +32,5 @@
 - Panorama
 - 느린 여행 (Slow Journey)
 
-### IZ*ONE ONLINE CONCERT〈ONE, THE STORY〉
+### IZ*ONE ONLINE CONCERT 〈ONE, THE STORY〉
 - 평행우주 (Parallel Universe)
